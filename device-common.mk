@@ -49,10 +49,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
 
-# Set zygote config
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote64_32
-PRODUCT_COPY_FILES += system/core/rootdir/init.zygote64_32.rc:root/init.zygote64_32.rc
-
 PRODUCT_PACKAGES += libGLES_android
 
 # Graphics HAL
@@ -141,8 +137,8 @@ PRODUCT_PACKAGES += \
 
 endif
 
-# Use Launcher3
-PRODUCT_PACKAGES += Launcher3
+# Use Launcher3QuickStep
+PRODUCT_PACKAGES += Launcher3QuickStep
 
 # Copy hardware config file(s)
 PRODUCT_COPY_FILES +=  \
@@ -161,9 +157,12 @@ $(call inherit-product-if-exists, device/linaro/hikey/wpan/ti-wpan-products.mk)
 
 PRODUCT_COPY_FILES += \
         frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+        frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
         frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
         frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
-        device/linaro/hikey/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+        device/linaro/hikey/wpa_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant.conf \
+        $(LOCAL_PATH)/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
+        $(LOCAL_PATH)/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf
 
 # audio policy configuration
 USE_XML_AUDIO_POLICY_CONF := 1

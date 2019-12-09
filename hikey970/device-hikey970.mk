@@ -40,7 +40,7 @@ PRODUCT_PACKAGES += gralloc.hikey970
 
 PRODUCT_PACKAGES += power.hikey970
 
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += sys.usb.controller=ff100000.dwc3
+#PRODUCT_DEFAULT_PROPERTY_OVERRIDES += sys.usb.controller=ff100000.dwc3
 
 # Include vendor binaries
 $(call inherit-product-if-exists, vendor/linaro/hikey970/device-vendor.mk)
