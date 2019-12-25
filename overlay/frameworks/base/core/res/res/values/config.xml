@@ -86,4 +86,5 @@
         <item>7</item>
     </integer-array>
 
+    <string translatable="false" name="config_ntpServer">ntp7.aliyun.com</string>
 </resources>
